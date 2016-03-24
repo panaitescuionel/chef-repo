@@ -1,0 +1,24 @@
+.cooks
+bin
+.vagrant
+.berkshelf/cookbooks
+.berkshelf/tmp
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+/cookbooks
+# Bundler
+bin/*
+.bundle/*
+vendor/*
+.kitchen/
+.kitchen.local.yml
+.colander
+berks.json
+.vagabond
+Berksfile.lock
+Gemfile.lock
+Policyfile.lock.json

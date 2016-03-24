@@ -1,0 +1,29 @@
+sudo: required
+services:
+  - docker
+addons:
+  apt:
+    sources:
+      - chef-current-precise
+    packages:
+      - chefdk
+
+env:
+  global:
+  - KITCHEN_ARGS="--destroy=always"
+  - KITCHEN_LOCAL_YAML=.kitchen.docker.yml
+  matrix:
+# CHEF_VERSION is only for unit tests, no for test-kitchen:
+  - TESTS="style unit"
+# Split up the test-kitchen run to avoid exceeding 50 minutes:
+  - TESTS="integration" KITCHEN_REGEXP=centos
+  - TESTS="integration" KITCHEN_REGEXP=ubuntu
+
+install: echo "skip bundle install"
+
+# Ensure we make ChefDK's Ruby the default
+before_script:
+  - eval "$(/opt/chefdk/bin/chef shell-init bash)"
+
+script:
+  - /opt/chefdk/embedded/bin/chef exec rake $TESTS

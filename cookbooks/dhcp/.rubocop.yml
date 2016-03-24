@@ -1,0 +1,21 @@
+AllCops:
+  Exclude:
+    - Rakefile
+    - Berksfile
+    - Policyfile.rb
+    - Guardfile
+    - bin/**/*
+    - test/**/*
+    - vendor/**/*
+
+LineLength:
+  Enabled: false
+
+Style/Next:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: false
+
+WordArray:
+  MinSize: 3
